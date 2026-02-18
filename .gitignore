@@ -1,0 +1,26 @@
+# Virtual Environments
+.venv/
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Workspace settings
+.vscode/
+
+# Local data & logs
+daily_reports/
+*.txt
+watchlist.json
+
+# Sensitive configuration (Keys, Tokens)
+# CAUTION: If you want to upload this, remove it from .gitignore
+# However, it is highly recommended to use environment variables instead.
+config.json
+
+# Agent state
+.agent/
