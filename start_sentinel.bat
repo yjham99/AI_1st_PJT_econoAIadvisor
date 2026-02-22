@@ -21,9 +21,11 @@ echo [2/3] 64bit 참모진 소집 중 (Telegram Bot, Scheduler)...
 start "Alpha_HQ_Bot" cmd /k "python telegram_bot.py"
 start "Alpha_HQ_Scheduler" cmd /k "python daily_scheduler.py"
 
-:: 3. 32bit 시스템 가동 (키움 인터페이스)
-echo [3/3] 32bit 감시탑 가동 중 (Kiwoom Interface)...
-:: 시스템에 설치된 32bit 파이썬 경로를 명시적으로 사용하거나 py -3.10-32 활용
+:: 3. 32bit 시스템 가동 (키움 인터페이스 + KOA Studio)
+echo [3/3] 32bit 감시탑 가동 중 (Kiwoom Interface & KOA Studio)...
+:: 신규 실행 파일 경로 반영
+start "Alpha_HQ_KOAStudio" "C:\OpenAPI\KOAStudioSA.exe"
+timeout /t 3 >nul
 start "Alpha_HQ_Kiwoom" cmd /k "py -3.10-32 kiwoom_interface.py"
 
 echo.

@@ -1,12 +1,14 @@
 import schedule
 import time
 import subprocess
+import sys
 from datetime import datetime
 
 def run_analysis(mode="daily"):
     print(f"[{datetime.now()}] Triggering {mode} analysis...")
     try:
-        subprocess.run(["python", "market_scanner.py", mode], check=True)
+        # Use sys.executable to ensure we use the same environment
+        subprocess.run([sys.executable, "market_scanner.py", mode], check=True)
     except Exception as e:
         print(f"Error during {mode} run: {e}")
 
@@ -32,6 +34,14 @@ print("- Sat: 12:00")
 print("- Sun: 12:00 (Weekly Summary)")
 
 if __name__ == "__main__":
+    last_heartbeat = 0
     while True:
         schedule.run_pending()
+        
+        # 1시간마다 생존 신고 (로그 용)
+        current_time = time.time()
+        if current_time - last_heartbeat > 3600:
+            print(f"[{datetime.now()}] Scheduler is alive and watching...")
+            last_heartbeat = current_time
+            
         time.sleep(30)

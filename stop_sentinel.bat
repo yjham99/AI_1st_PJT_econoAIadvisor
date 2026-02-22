@@ -15,11 +15,11 @@ echo.
 echo [1/2] 가동 중인 터미널 세션 종료 중...
 taskkill /FI "WINDOWTITLE eq Alpha_HQ*" /T /F >nul 2>&1
 
-:: 2. 미처 종료되지 않은 Python 프로세스 정리
-echo [2/2] 잔류 Python 프로세스 정리 중...
-:: start_sentinel.bat의 방식과 동일하게 모든 python 프로세스 종료 (필요시)
-:: taskkill /F /IM python.exe /T >nul 2>&1
-:: taskkill /F /IM py.exe /T >nul 2>&1
+:: 2. 미처 종료되지 않은 Python 및 Kiwoom 프로세스 정리
+echo [2/2] 잔류 프로세스(Python, KOAStudio) 정리 중...
+taskkill /F /IM python.exe /T >nul 2>&1
+taskkill /F /IM py.exe /T >nul 2>&1
+taskkill /F /IM KOAStudioSA.exe /T >nul 2>&1
 
 echo.
 echo ------------------------------------------------------
